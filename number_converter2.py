@@ -49,9 +49,13 @@ def main():
                 print("Неверный выбор системы счисления")
                 return
             
-            # Разбивка двоичного числа на регистры по 16 бит
-            if len(binary) > 16:
-                chunks = [binary[i:i+16] for i in range(0, len(binary), 16)]
+            # Разбивка двоичного числа на регистры по 8 бит
+            if len(binary) > 8:
+                # Дополняем нулями слева до длины, кратной 8
+                padding = (8 - len(binary) % 8) % 8
+                padded_binary = '0' * padding + binary
+                # Разбиваем на 8-битные группы справа налево
+                chunks = [padded_binary[i:i+8] for i in range(0, len(padded_binary), 8)]
                 binary_formatted = ' '.join(chunks)
             else:
                 binary_formatted = binary
