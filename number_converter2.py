@@ -19,6 +19,8 @@ def main():
             break
 
         number = input("Введите число: ").strip()
+        # Удаляем возможные пробелы
+        number = number.replace(' ', '')
         
         try:
             if choice == '1':
